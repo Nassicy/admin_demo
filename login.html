@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <link rel="stylesheet" href="resources/main.css">
+    <link rel="stylesheet" href="resources/base.css">
+    <link rel="stylesheet" href="resources/login.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+
+<body>
+    <div class="app-main" id="app">
+        <div class="login">
+            <div class="login-con">
+                <section class="login-container">
+                    <div class="header">
+                        <p class="title">欢迎登录</p>
+                    </div>
+                    <div class="form-con login-body">
+                        <form ref="loginForm" :model="form" :rules="rules">
+                            <div prop="userName" class="form-group">
+                                <input class="input" v-model="form.userName" placeholder="手机号/用户名" />
+                                <i class="icon icon-user" ></i>
+                            </div>
+                            <div prop="password" class="form-group">
+                                <input class="input" type="password" v-model="form.password" placeholder="请输入密码"/>
+                                <i class="icon icon-pwd"></i>
+                            </div>
+                            <div class="form-group">
+                                <button @click="handleSubmit()" type="primary" class="btn btn-primary btn-width-long">登录</button>
+                            </div>
+                        </form>
+                        <p class="login-tip"><Checkbox v-model="single"></Checkbox>记住密码(公共场合请勿使用)</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                form: {
+                    userName: 'iview_admin',
+                    password: ''
+                },
+                rules: {
+                    userName: [
+                        { required: true, message: '账号不能为空', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '密码不能为空', trigger: 'blur' }
+                    ]
+                },
+                single: false
+            };
+        },
+        methods: {
+            handleSubmit() {
+                window.location.href = 'home.html';
+        
+            }
+        }
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <link rel="stylesheet" href="resources/base.css">
+    <link rel="stylesheet" href="resources/main.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+
+<body>
+    <main class="main ivu-layout ivu-layout-has-sider" id="app" :class="{'main-hide-text': shrink}">
+        <div class="ivu-layout-sider menu-slide">
+            <aside class="side-menu-wrapper">
+                <ul class="menu-vertical">
+                    <li class="menu-item li-item active" title="首页">
+                        <a class="link-item" href="home.html">
+                            <i class="ivu-icon menu-title ivu-icon-ios-home"></i><span  class="menu-text">首页</span>
+                        </a>
+                    </li>
+                    <li class="menu-submenu li-item  menu-child-item-active" title="代理系统" @click="toggleSubMenu()">
+                        <div class="menu-submenu-title link-item">
+                            <i class="ivu-icon menu-title ivu-icon-ios-people"></i>
+                            <span class="menu-text">代理系统</span>
+                            <i class="ivu-icon ivu-icon-ios-arrow-down menu-submenu-arrow-down hide-icon" :class="{'ivu-icon-ios-arrow-up':subMenuStatus}"></i>
+                        </div>
+                        <ul class="ivu-menu sub-menu-list hide-sub-menu" v-if="subMenuStatus">
+                            <li class="li-item sub-menu-item" title="新增用户">
+                                <a href="addUser.html" class="link-item">
+                                    <i class="ivu-icon sub-menu-title ivu-icon-md-person-add"></i><span  class="menu-text">新增用户</span>
+                                </a>
+                            </li>
+                            <li class="li-item sub-menu-item" title="用户列表">
+                                <a href="userList.html" class="link-item">
+                                    <i class="ivu-icon sub-menu-title ivu-icon-md-people"></i><span  class="menu-text">用户列表</span>
+                                </a>
+                            </li>
+                            <li class="li-item sub-menu-item " title="数据统计">
+                                <a class="link-item" href="analystics.html" >
+                                <i class="ivu-icon sub-menu-title ivu-icon-ios-stats"></i><span class="menu-text">数据统计</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <section class="ivu-layout right-container">
+            <div class="header-con ivu-layout-header">
+                <div class="header-bar"><a type="text" class="sider-trigger-a"><i class="ivu-icon ivu-icon-md-menu icon-menu" @click="toggleMenu()"></i></a>
+                    <div class="custom-bread-crumb">
+                        <div class="ivu-breadcrumb">
+                            <span>
+                                <a href="home.html" target="_self" class="ivu-breadcrumb-item-link">
+                                <i class="ivu-icon"></i>首页 </a> 
+                            </span>
+                            <span>
+                                <a href="home.html" target="_self" class="ivu-breadcrumb-item-link">
+                                <i class="ivu-icon"></i>/ 数据统计</a> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="custom-content-con">
+                        <div class="user-avator-dropdown" @click="triggerDropDown()">
+                            <div class=" ivu-dropdown ivu-dropdown-rel">
+                                <span class="ivu-avatar ivu-avatar-circle ivu-avatar-default ivu-avatar-image"><img src="./resources/images/avator.png"></span>
+                                <i class="ivu-icon ivu-icon-md-arrow-dropdown icon-arrow-down"></i>
+                            </div>
+                            <div class="ivu-select-dropdown" v-if="showDropdown">
+                                <ul class="ivu-dropdown-menu">
+                                    <li class="ivu-dropdown-item" @click="logout()">退出登录</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-container-body">
+                <h3 class="home-title">达芬奇汽车后台管理中心</h3>
+                <div class="link-box">
+                    <a href="addUser.html" class="link-item">新增用户</a>
+                    <a href="userList.html" class="link-item">用户列表</a>
+                    <a href="analystics.html" class="link-item">数据统计</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                theme: 'dark',
+                shrink: false,
+                userName: '',
+                showDropdown: false,
+                subMenuStatus:true
+            };
+        },
+        methods: {
+            triggerDropDown() {
+                this.showDropdown = !this.showDropdown;
+            },
+            logout() {
+                window.location.href = 'login.html';
+            },
+            toggleMenu() {
+                this.shrink = !this.shrink;
+            },
+            toggleSubMenu(){
+                this.subMenuStatus = !this.subMenuStatus;
+            }
+        }
+
+    });
+
+</script>
+
+</html>
