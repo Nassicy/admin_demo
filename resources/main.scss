@@ -205,9 +205,77 @@ body {
                         color:#404040;
                     }
                 }
+                .table-border{
+                    border-right: 1px solid #ddd;
+                }
                 // .table-tr:nth-child(2n){
                 //     background: #f8f8f9;
                 // }
+            }
+        }
+        .page-box{
+            min-width:400px;
+            max-width: 600px;
+            margin:20px auto;
+        }
+        .add-user-box{
+            width:500px;
+            margin:20px auto;
+            .form-group{
+                width:100%;
+                margin-bottom:20px;
+                font-size: 0;
+                position: relative;
+                .label-text{
+                    display: inline-block;
+                    width:110px;
+                    text-align: right;
+                    font-size:14px;
+                    margin-right:10px;
+                   
+                }
+                .input-text{
+                    display: inline-block;
+                    width:284px;
+                    height:30px;
+                    border:1px solid #ddd;
+                    border-radius: 4px;
+                    font-size:14px;
+                    padding-left: 10px;
+                }
+                .tip-info{
+                    position: absolute;
+                    left:124px;
+                    font-size: 12px;
+                    color:#e15829;
+                }
+                .icon-btn{
+                    position: absolute;
+                    left:400px;
+                    top:4px;
+                    font-size: 20px;
+                    color:#12b812;
+                }
+                .span-text{
+                    font-size: 14px;
+                }
+            }
+            .btn-group{
+                width:240px;
+                margin:0 auto;
+                .btn:first-child{
+                    margin-right: 10px;
+                }
+            }
+        }
+        .search-box{
+            margin:20px auto;
+            .margin-left{
+                margin-left:20px;
+            }
+            .date-text {
+                margin-top:20px;
+                width:250px;
             }
         }
     }
@@ -268,4 +336,13 @@ body {
 
 .btn-width-long {
     width: 100%;
+}
+.label-width-long{
+    width:130px !important;
+}
+.label-required{
+    &:before{
+        content:'*';
+        color: #e15829;
+    }
 }

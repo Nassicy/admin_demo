@@ -30,7 +30,7 @@
                             <i class="ivu-icon ivu-icon-ios-arrow-down menu-submenu-arrow-down hide-icon" :class="{'ivu-icon-ios-arrow-up':subMenuStatus}"></i>
                         </div>
                         <ul class="ivu-menu sub-menu-list hide-sub-menu" v-if="subMenuStatus">
-                            <li class="li-item sub-menu-item" title="新增用户">
+                            <li class="li-item sub-menu-item " title="新增用户">
                                 <a href="addUser.html" class="link-item">
                                     <i class="ivu-icon sub-menu-title ivu-icon-md-person-add"></i><span  class="menu-text">新增用户</span>
                                 </a>
@@ -41,7 +41,7 @@
                                 </a>
                             </li>
                             <li class="li-item sub-menu-item " title="数据统计">
-                                <a class="link-item" href="analystics.html">
+                                <a class="link-item" href="analystics.html" >
                                 <i class="ivu-icon sub-menu-title ivu-icon-ios-stats"></i><span class="menu-text">数据统计</span></a>
                             </li>
                         </ul>
@@ -62,6 +62,10 @@
                                 <a href="home.html" target="_self" class="ivu-breadcrumb-item-link">
                                 <i class="ivu-icon"></i>/ 用户列表</a> 
                             </span>
+                            <span>
+                                <a href="home.html" target="_self" class="ivu-breadcrumb-item-link">
+                                <i class="ivu-icon"></i>/ 编辑用户</a> 
+                            </span>
                         </div>
                     </div>
                     <div class="custom-content-con">
@@ -80,45 +84,27 @@
                 </div>
             </div>
             <div class="right-container-body">
-                <div class="table-box">
-                    <table class="table">
-                        <thead>
-                            <th class="table-th">用户名</th>
-                            <th class="table-th">用户类型</th>
-                            <th class="table-th">创建时间</th>
-                            <th class="table-th">操作</th>
-                        </thead>
-                        <tbody>
-                            <tr class="table-tr">
-                                <td>18928225121</td>
-                                <td>旗舰用户</td>
-                                <td>08/21 21:52</td>
-                                <td><a href="editUser.html" class="btn-edit">编辑</a></td>
-                            </tr>
-                            <tr class="table-tr">
-                                <td>18928225121</td>
-                                <td>旗舰用户</td>                                
-                                <td>08/21 21:52</td>
-                                <td><a href="editUser.html" class="btn-edit">编辑</a></td>
-                            </tr>
-                            <tr class="table-tr">
-                                <td>18928225121</td>
-                                <td>普通用户</td>                                
-                                <td>08/21 21:52</td>
-                                <td><a href="editUser.html" class="btn-edit">编辑</a></td>
-                            </tr>
-                            <tr class="table-tr">
-                                <td>18928225121</td>
-                                <td>普通用户</td>                                                                
-                                <td>08/21 21:52</td>
-                                <td><a href="editUser.html" class="btn-edit">编辑</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="page-box">
-                        <Page :total="100"  />
+                <section class="add-user-box">
+                    <div class="form-group">
+                        <label for="" class="label-text label-required label-width-long">用户名:</label>
+                        <input type="text" name="tel" class="input-text" placeholder="有效手机号">
+                        <i class="ivu-icon icon-btn ivu-icon-ios-checkmark-circle" v-if="!telError"></i>
+                        <p class="tip-info" v-if="telError">error info</p>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="" class="label-text label-required label-width-long">车机破解系统状态:</label>
+                        <input type="password" name="pwd" class="input-text">
+                        <i class="ivu-icon icon-btn ivu-icon-ios-checkmark-circle" v-if="!statusError"></i>                        
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-text label-width-long">用户密码:</label>
+                        <span class="span-text">124</span>                   
+                    </div>
+                    <div class="btn-group btn-group">
+                        <Button type="primary" class="btn btn-primary btn-width-common">确认修改</Button>
+                        <a  href="userList.html" class="btn btn-default btn-width-common">取消</a>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
@@ -132,7 +118,9 @@
                 shrink: false,
                 userName: '',
                 showDropdown: false,
-                subMenuStatus: true,
+                subMenuStatus:true,
+                telError:false,
+                statusError: false
             };
         },
         methods: {
@@ -145,7 +133,7 @@
             toggleMenu() {
                 this.shrink = !this.shrink;
             },
-            toggleSubMenu() {
+            toggleSubMenu(){
                 this.subMenuStatus = !this.subMenuStatus;
             }
         }

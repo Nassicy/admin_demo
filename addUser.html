@@ -60,7 +60,7 @@
                             </span>
                             <span>
                                 <a href="home.html" target="_self" class="ivu-breadcrumb-item-link">
-                                <i class="ivu-icon"></i>/ 数据统计</a> 
+                                <i class="ivu-icon"></i>/ 新增用户</a> 
                             </span>
                         </div>
                     </div>
@@ -80,12 +80,22 @@
                 </div>
             </div>
             <div class="right-container-body">
-                <h3 class="home-title">达芬奇汽车后台管理中心</h3>
-                <div class="link-box">
-                    <a href="addUser.html" class="link-item">新增用户</a>
-                    <a href="userList.html" class="link-item">用户列表</a>
-                    <a href="analystics.html" class="link-item">数据统计</a>
-                </div>
+                <section class="add-user-box">
+                    <div class="form-group">
+                        <label for="" class="label-text label-required">手机号:</label>
+                        <input type="text" name="tel" class="input-text" placeholder="有效手机号">
+                        <p class="tip-info" v-if="telError">error info</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-text label-required">密码:</label>
+                        <input type="password" name="pwd" class="input-text">
+                        <p class="tip-info" v-if="pwdError">error info</p>                        
+                    </div>
+                    <div class="btn-group">
+                        <Button type="primary" class="btn btn-primary btn-width-common">新增旗舰用户</Button>
+                        <Button  class="btn btn-default btn-width-common">新增临时用户</Button>
+                    </div>
+                </section>
             </div>
         </section>
     </main>
@@ -99,7 +109,9 @@
                 shrink: false,
                 userName: '',
                 showDropdown: false,
-                subMenuStatus:true
+                subMenuStatus:true,
+                telError:false,
+                pwdError: false
             };
         },
         methods: {
